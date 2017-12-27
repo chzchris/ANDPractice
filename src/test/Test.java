@@ -1,6 +1,8 @@
 package test;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Test {
 
@@ -9,13 +11,16 @@ public class Test {
 		
 		try{
 			
-			long a = System.currentTimeMillis();
-			
-			Thread.sleep(3000);
-			
-			long b = System.currentTimeMillis();
-			
-			System.out.println((b-a)/1000);
+			// long a = System.currentTimeMillis();
+			// 
+			// Thread.sleep(3000);
+			// 
+			// long b = System.currentTimeMillis();
+			// 
+			// System.out.println((b-a)/1000);
+
+      int[] a = Test.twoSum(new int[]{3, 2, 4}, 6);
+      System.out.println(Arrays.toString(a));
 			
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -35,6 +40,25 @@ public class Test {
 
 		
 	}
+
+    public static int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for(int i=0; i<nums.length; i++) {
+            int complement = target - nums[i];
+            System.out.println("test 11:" + complement);
+            System.out.println("test 111:" + map.keySet());
+            Integer value = map.get(complement);
+            System.out.println("test 12:" + value);
+            if (value == null) {
+                map.put(nums[i], i);
+            } else {
+                System.out.println("test:" + map.get(3));
+                result = new int[]{map.get(complement), i};
+            }
+        }
+        return result;
+    }
 	
     public static void merge(int A[], int m, int B[], int n) {
         
